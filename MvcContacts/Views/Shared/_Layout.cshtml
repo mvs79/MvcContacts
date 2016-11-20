@@ -25,13 +25,17 @@
                     <li>@Html.ActionLink("Startseite", "Index", "Home")</li>
                     <li>@Html.ActionLink("Info", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Restaurants", "Index", "Restaurants")</li>
+                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
+        @RenderSection("featured", required: false)
         @RenderBody()
+        
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Meine ASP.NET-Anwendung</p>

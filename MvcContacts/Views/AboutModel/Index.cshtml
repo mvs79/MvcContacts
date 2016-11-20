@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MvcContacts.Models.AboutModel>
+
+@{
+    ViewBag.Title = "Index";
+   
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @section featured{
+        Wie zeigen Ihnen die @Model.Count() Ergebnisse
+
+        }
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Strasse)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ort)
+        </th>
+        <th></th>
+
+    </tr>*@
+
+@foreach (var item in Model) {
+     
+    <div>
+        <h4>@item.Id</h4>
+        <span>@item.Name</span>
+        <span>@item.Strasse</span>
+        <span>@item.Ort</span>
+    </div>
+
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        
+   
+}
+
+@*</table>*@

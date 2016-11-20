@@ -29,5 +29,9 @@ namespace MvcContacts.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MvcContacts.Models.Contacts> Contacts { get; set; }
+
+        public System.Data.Entity.DbSet<MvcContacts.Models.Restaurants> Restaurants { get; set; }
     }
 }
