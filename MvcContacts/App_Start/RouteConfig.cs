@@ -7,6 +7,9 @@ using System.Web.Routing;
 
 namespace MvcContacts
 {
+    /// <summary>
+    /// Klasse RouteConfig
+    /// </summary>
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
@@ -27,3 +30,4 @@ namespace MvcContacts
         }
     }
 }
+
