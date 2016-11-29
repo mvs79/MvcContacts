@@ -9,13 +9,14 @@ namespace MvcContacts.Models
     public class RestaurantReview
     {
         public int Id { get; set; }
-        [Required]
-        [Range(1,10)]
+        //[Required]
+        //[Range(1,10)]
         public int Rating { get; set; }
-        [Required]
-        [StringLength(1024)]
+        //[Required]
+        //[StringLength(1024)]
         public int Body { get; set; }
         public string RestaurantReviewer { get; set; }
-        public int RestaurantId { get; set; }
+        public Restaurants Restaurant { get; set; }
+      
     }
 }

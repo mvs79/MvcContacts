@@ -10,6 +10,7 @@ namespace MvcContacts.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "MvcContacts.Models.MvcContactsDB";
         }
 
@@ -30,8 +31,17 @@ namespace MvcContacts.Migrations
 
             context.Restaurants.AddOrUpdate( r => r.Name,
                 new Models.Restaurants { Name="Fellini",Street="Oslebshausener Str",Place="Bremen", RestaurantClass="Gourmet"  },
-                new Models.Restaurants { Name = "Dubrovnik", Street = "Hauptstrasse", Place = "Wiesmoor",RestaurantClass="Gourmet" }
+                new Models.Restaurants { Name = "Dubrovnik", Street = "Hauptstrasse", Place = "Wiesmoor",RestaurantClass="Gourmet" },
+                new Models.Restaurants { Name = "Stavros", Street = "Obernstrasse", Place = "Bremen", RestaurantClass = "Gourmet" },
+                new Models.Restaurants { Name = "China-Imbiss", Street = "Hauptstrasse", Place = "Aurich", RestaurantClass = "Gourmet" },
+                new Models.Restaurants { Name = "Fellini", Street = "Oslebshausener Str", Place = "Bremen", RestaurantClass = "Gourmet" },
+                new Models.Restaurants { Name = "Bayrisches Bierhaus", Street = "Theresienwiese", Place = "München", RestaurantClass = "Gourmet" }
                 );
+            for(int i = 0; i<1000;i++)
+            {
+                context.Restaurants.AddOrUpdate(
+                    new Models.Restaurants { Name = i.ToString(), Place = "Nowhere", RestaurantClass = "Gourmet" });
+            }
         }
     }
 }

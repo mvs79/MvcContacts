@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace MvcContacts.Controllers
 {   
@@ -11,23 +13,26 @@ namespace MvcContacts.Controllers
     public class HomeController : Controller
     {
         MvcContactsDB db = new MvcContactsDB();
-        public ActionResult Index()
+
+        public ActionResult AutoComplete(string term)
         {
-            //return View(db.Restaurants.ToList());
-            var query = from restaurant in db.Restaurants
-                        select new RestaurantViewModel
-                        {
-                            Id = restaurant.Id,
-                            Name = restaurant.Name,
-                            Street = restaurant.Street,
-                            Place = restaurant.Place,
-                            Reviews = restaurant.Reviews
-                        };
-
-            return View(query);
-
+            var model = db.Restaurants.Where(x => x.Name.StartsWith(term))
+                        .Take(10).Select(r => new { label = r.Name });
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Index(string searchTerm, int page=1)
+        {
+            var model = db.Restaurants.OrderBy(x => x.Name).Where(x => searchTerm == null || x.Name.StartsWith(searchTerm) 
+            || x.Name.Contains(searchTerm))
+            .ToPagedList(page,10);
+            if (Request.IsAjaxRequest())
+
+            {
+                return PartialView("Restaurants", model);
+            }
+            return View(model);
+        }
         public ActionResult About()
         {
             //ViewBag.Message = "Your application description page.";

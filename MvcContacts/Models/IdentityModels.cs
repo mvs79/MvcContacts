@@ -33,5 +33,7 @@ namespace MvcContacts.Models
         public System.Data.Entity.DbSet<MvcContacts.Models.Contacts> Contacts { get; set; }
 
         public System.Data.Entity.DbSet<MvcContacts.Models.Restaurants> Restaurants { get; set; }
+
+        public System.Data.Entity.DbSet<MvcContacts.Models.RestaurantReview> RestaurantReviews { get; set; }
     }
 }

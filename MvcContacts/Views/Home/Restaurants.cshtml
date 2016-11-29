@@ -1,0 +1,27 @@
+﻿@*@using PagedList*@
+@model IPagedList<MvcContacts.Models.Restaurants>
+<div id="restaurantList">
+    <div id="pagedList" data-mvc-target="#restaurantList">
+     @Html.PagedListPager(Model,page => Url.Action("Index",new {page}),PagedListRenderOptions.MinimalWithItemCountText)
+    </div>
+    @foreach (var item in Model)
+    {
+        
+        <div>
+            <div>
+                @item.Name
+            </div>
+            <div>
+                @item.Street
+            </div>
+            <div>
+                @item.Place
+            </div>
+            <div>
+                @item.RestaurantClass
+            </div>
+           
+        </div>
+           
+    }
+    </div>

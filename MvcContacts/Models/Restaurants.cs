@@ -7,13 +7,11 @@ namespace MvcContacts.Models
 {
     public class Restaurants
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Street { get; set; }
-        public string Place { get; set; }
-        public string RestaurantClass { get; set; }
-        public RestaurantReview Reviews { get; set; }
-
-        public ICollection<Restaurants> restaurants { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Street { get; set; }
+        public virtual string Place { get; set; }
+        public virtual string RestaurantClass { get; set; }
+        public virtual ICollection<RestaurantReview> Reviews{ get; set; }
     }
 }

@@ -1,12 +1,31 @@
-﻿@model IEnumerable<MvcContacts.Models.RestaurantViewModel>
+﻿@*@using PagedList*@
+@model IPagedList<MvcContacts.Models.Restaurants>
 
-@foreach (var item in Model)
-{
-  <p>@item.Id</p>
-  <p>@item.Name</p>
-  <p>@item.RestaurantClass</p>
-  <p>@item.Street</p>
-  <p>@item.Place</p>
-  
 
+@{
+    ViewBag.Title = "Ode To Food";
 }
+
+<h2>Ode to the Food</h2>
+<form action="@Url.Action("Index")" method="get" data-mvc-ajax="true" data-mvc-target="#restaurantList">
+<input type="search" name="searchTerm" data-mvc-autocomplete="@Url.Action("AutoComplete")"/>
+<input type="submit" value="Suche"/>
+</form>
+@*@using (Html.BeginForm())
+{
+<input type="search" name="searchTerm"/>
+<input type="submit" value="Suche"/>
+}*@
+@*@using (Ajax.BeginForm(new AjaxOptions
+{
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "restaurantList"
+
+}))
+{
+    <input type="search" name="searchTerm" />
+    <input type="submit" value="Suche" />
+}*@
+
+@Html.Partial("Restaurants",Model)
